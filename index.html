@@ -1,496 +1,684 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Surat untuk Mas ♡</title>
+<title>Surat untuk Mas ♡</title>
 
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #243B53;
-            font-family: Georgia, serif;
-            color: #243B53;
-        }
+<style>
 
-        .paper {
-            width: 80%;
-            max-width: 680px;
-            padding: 45px 35px;
-            margin: 30px 0;
-            text-align: center;
-            background: #F5F0E6;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
+* {
+    box-sizing: border-box;
+}
 
-        h1 {
-            font-size: 36px;
-            margin-bottom: 25px;
-        }
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #243B53;
+    font-family: Georgia, serif;
+    color: #243B53;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
 
-        h2 {
-            font-size: 24px;
-            line-height: 1.6;
-            margin-top: 30px;
-        }
+.paper {
+    width: 100%;
+    max-width: 720px;
+    min-height: 620px;
+    background: #F5F0E6;
+    padding: 45px 50px;
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.35),
+        inset 0 0 0 8px #E7DED0;
+    position: relative;
+    overflow: hidden;
+}
 
-        h3 {
-            font-size: 22px;
-            margin-top: 35px;
-        }
+.paper::before {
+    content: "♡";
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 25px;
+    opacity: 0.35;
+}
 
-        p {
-            line-height: 1.9;
-            font-size: 17px;
-            margin: 18px 0;
-        }
+.paper::after {
+    content: "♡";
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    font-size: 25px;
+    opacity: 0.35;
+}
 
-        .poem {
-            line-height: 2;
-            font-style: italic;
-            margin: 25px 10px;
-        }
+.page {
+    display: none;
+    animation: fade 0.6s ease;
+}
 
-        .divider {
-            margin: 35px 0;
-            font-size: 22px;
-        }
+.page.active {
+    display: block;
+}
 
-        input {
-            width: 80%;
-            padding: 13px;
-            margin-top: 15px;
-            border: 1px solid #587A9E;
-            background: #ffffff;
-            text-align: center;
-            font-size: 16px;
-        }
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateX(15px);
+    }
 
-        button {
-            margin-top: 18px;
-            padding: 13px 28px;
-            border: none;
-            background: #587A9E;
-            color: white;
-            font-family: Georgia, serif;
-            font-size: 16px;
-            cursor: pointer;
-        }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
-        #pesan {
-            display: none;
-        }
+h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
 
-        .error {
-            color: #8B3A3A;
-            margin-top: 15px;
-        }
+h2 {
+    text-align: center;
+    font-size: 25px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
 
-        .closing {
-            margin-top: 40px;
-        }
-    </style>
+h3 {
+    text-align: center;
+    font-size: 21px;
+    line-height: 1.8;
+}
+
+p {
+    font-size: 17px;
+    line-height: 1.9;
+    margin: 18px 0;
+}
+
+.center {
+    text-align: center;
+}
+
+.poem {
+    text-align: center;
+    font-style: italic;
+    line-height: 2;
+}
+
+.divider {
+    text-align: center;
+    margin: 30px 0;
+    font-size: 22px;
+}
+
+.signature {
+    text-align: center;
+    margin-top: 45px;
+    font-style: italic;
+    font-size: 18px;
+}
+
+input {
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+    padding: 14px;
+    border: 1px solid #587A9E;
+    background: white;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 16px;
+}
+
+button {
+    border: none;
+    padding: 12px 24px;
+    margin: 8px;
+    background: #587A9E;
+    color: white;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.navigation {
+    text-align: center;
+    margin-top: 30px;
+    border-top: 1px solid #C7BDAF;
+    padding-top: 20px;
+}
+
+.page-number {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 10px;
+    opacity: 0.7;
+}
+
+.error {
+    color: #8B3A3A;
+    text-align: center;
+}
+
+#pesan {
+    display: none;
+}
+
+.small {
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+</style>
 </head>
 
 <body>
 
 <div class="paper">
 
-    <!-- HALAMAN KUNCI -->
+<!-- HALAMAN KUNCI -->
 
-    <div id="kunci">
+<div id="kunci">
 
-        <h1>SURAT UNTUK MAS ♡</h1>
+    <h1>SURAT UNTUK MAS ♡</h1>
 
-        <p>
-            Ada pesan kecil yang ingin Adek sampaikan.
-        </p>
+    <div class="divider">♡ ───────── ♡</div>
 
-        <p>
-            Sebuah surat sederhana,
-            untuk seseorang yang punya tempat
-            di dalam cerita ini.
-        </p>
+    <p class="center">
+        Ada pesan kecil yang ingin Adek sampaikan.
+    </p>
 
-        <p>
-            Masukkan kode untuk membukanya.
-        </p>
+    <p class="center">
+        Sebuah surat sederhana,
+        untuk seseorang yang punya tempat
+        di dalam cerita ini.
+    </p>
 
-        <input
-            type="password"
-            id="kode"
-            placeholder="Masukkan kode..."
-        >
+    <p class="center">
+        Masukkan kode untuk membukanya.
+    </p>
 
-        <br>
+    <input
+        type="password"
+        id="kode"
+        placeholder="Masukkan kode..."
+    >
+
+    <div class="center">
 
         <button onclick="bukaSurat()">
             OPEN MY LETTER ♡
         </button>
 
-        <div id="error" class="error"></div>
-
     </div>
 
+    <div id="error" class="error"></div>
 
-    <!-- ISI SURAT -->
+    <p class="small center">
+        made with a little piece of heart ♡
+    </p>
 
-    <div id="pesan">
+</div>
 
-        <h1>FOR YOU, MAS ♡</h1>
+
+<!-- ISI SURAT -->
+
+<div id="pesan">
+
+
+<!-- HALAMAN 1 -->
+
+<div class="page active">
+
+    <h1>FOR YOU, MAS ♡</h1>
+
+    <div class="divider">♡ ───────── ♡</div>
+
+    <p>
+        Mas,
+    </p>
+
+    <p>
+        Ada beberapa hal yang mungkin lebih mudah
+        Adek tuliskan daripada Adek ucapkan.
+    </p>
+
+    <p>
+        Mungkin halaman ini sederhana,
+        hanya kumpulan tulisan di sebuah layar.
+        Tetapi setiap kata di dalamnya Adek tulis
+        dengan sungguh-sungguh.
+    </p>
+
+    <p>
+        Adek ingin Mas tahu,
+        ada seseorang yang selalu berharap
+        Mas baik-baik saja,
+        tetap kuat melewati prosesnya,
+        dan tidak berhenti mengejar
+        apa yang Mas impikan.
+    </p>
+
+    <div class="divider">♡</div>
+
+</div>
+
+
+<!-- HALAMAN 2 -->
+
+<div class="page">
+
+    <h2>UNTUK MIMPI-MIMPI MAS</h2>
+
+    <p>
+        Tidak semua perjalanan akan berjalan
+        sesuai yang kita bayangkan.
+    </p>
+
+    <p>
+        Ada hari ketika semuanya terasa mudah,
+        tetapi ada juga hari ketika satu langkah saja
+        terasa berat.
+    </p>
+
+    <p>
+        Kalau nanti ada hari seperti itu,
+        tidak apa-apa untuk berhenti sebentar.
+    </p>
+
+    <p class="center">
+        Tarik napas.<br>
+        Istirahat.<br>
+        Kemudian lanjutkan lagi.
+    </p>
+
+    <p>
+        Karena impian yang besar
+        memang membutuhkan perjalanan yang panjang.
+    </p>
+
+    <h3>
+        Mas kejar impian Mas.<br>
+        Adek kejar impian Adek. ♡
+    </h3>
+
+</div>
+
+
+<!-- HALAMAN 3 -->
+
+<div class="page">
+
+    <h2>UNTUK HARI KETIKA MAS LELAH ♡</h2>
+
+    <p>
+        Mas,
+    </p>
+
+    <p>
+        Kalau suatu hari Mas merasa lelah,
+        tolong jangan merasa harus selalu terlihat kuat.
+    </p>
+
+    <p>
+        Tidak apa-apa kalau hari ini Mas
+        tidak bisa melakukan semuanya.
+        Tidak apa-apa kalau langkah Mas sedikit lebih pelan.
+    </p>
+
+    <p>
+        Tidak apa-apa kalau Mas hanya ingin berhenti sebentar
+        dan mengambil napas.
+    </p>
+
+    <p>
+        Mas sudah berjalan sejauh ini.
+    </p>
+
+    <h3>
+        Jangan lupakan itu. ♡
+    </h3>
+
+    <p>
+        Ada begitu banyak hal yang sudah Mas lewati,
+        begitu banyak usaha yang mungkin tidak semua orang lihat,
+        dan begitu banyak perjuangan yang hanya Mas sendiri
+        yang tahu.
+    </p>
+
+</div>
+
+
+<!-- HALAMAN 4 -->
+
+<div class="page">
+
+    <h2>KETIKA LANGKAH TERASA BERAT</h2>
+
+    <p>
+        Jadi, kalau hari ini terasa berat,
+        istirahatlah sebentar.
+    </p>
+
+    <p>
+        Bukan berarti Mas menyerah.
+        Mas hanya sedang memberi kesempatan kepada diri sendiri
+        untuk kembali kuat.
+    </p>
+
+    <p>
+        Dan kalau nanti Mas sudah siap untuk melangkah lagi,
+        mulailah dari satu langkah kecil.
+    </p>
+
+    <p>
+        Tidak harus langsung jauh.
+        Tidak harus langsung sempurna.
+    </p>
+
+    <p>
+        Yang penting, Mas tetap percaya pada mimpi
+        yang sedang Mas perjuangkan.
+    </p>
+
+    <h3>
+        Mas boleh berjalan perlahan.<br>
+        Tapi jangan berhenti percaya pada diri sendiri. ♡
+    </h3>
+
+</div>
+
+
+<!-- HALAMAN 5 -->
+
+<div class="page">
+
+    <h2>SEBUAH PUISI KECIL ♡</h2>
+
+    <div class="poem">
 
         <p>
-            Mas,
+            Jika nanti jalan terasa panjang,<br>
+            jangan takut pada langkah yang perlahan.
         </p>
 
         <p>
-            Ada beberapa hal yang mungkin lebih mudah
-            Adek tuliskan daripada Adek ucapkan.
+            Sebab bunga pun tidak mekar<br>
+            dalam satu malam,<br>
+            dan pagi tidak datang<br>
+            hanya karena kita memintanya.
         </p>
 
         <p>
-            Mungkin halaman ini sederhana,
-            hanya kumpulan tulisan di sebuah layar.
-            Tetapi setiap kata di dalamnya Adek tulis
-            dengan sungguh-sungguh.
+            Ada waktu untuk berjuang,<br>
+            ada waktu untuk beristirahat,<br>
+            ada waktu untuk menangis,<br>
+            dan ada waktu untuk kembali tersenyum.
         </p>
-
-        <p>
-            Adek ingin Mas tahu,
-            ada seseorang yang selalu berharap
-            Mas baik-baik saja,
-            tetap kuat melewati prosesnya,
-            dan tidak berhenti mengejar
-            apa yang Mas impikan.
-        </p>
-
-        <div class="divider">♡ ───────── ♡</div>
-
-        <h2>UNTUK MIMPI-MIMPI MAS</h2>
-
-        <p>
-            Tidak semua perjalanan akan berjalan
-            sesuai yang kita bayangkan.
-        </p>
-
-        <p>
-            Ada hari ketika semuanya terasa mudah,
-            tetapi ada juga hari ketika satu langkah saja
-            terasa berat.
-        </p>
-
-        <p>
-            Kalau nanti ada hari seperti itu,
-            tidak apa-apa untuk berhenti sebentar.
-        </p>
-
-        <p>
-            Tarik napas.
-        </p>
-
-        <p>
-            Istirahat.
-        </p>
-
-        <p>
-            Kemudian, kalau sudah siap,
-            lanjutkan lagi.
-        </p>
-
-        <p>
-            Karena impian yang besar
-            memang membutuhkan perjalanan yang panjang.
-        </p>
-
-        <h2>
-            Mas kejar impian Mas.<br>
-            Adek kejar impian Adek.
-        </h2>
-
-        <p>
-            Kita tidak harus selalu berada di tempat yang sama
-            atau mencapai semuanya dalam waktu yang sama.
-        </p>
-
-        <p>
-            Yang penting, kita sama-sama belajar untuk tumbuh,
-            mencoba lagi, dan menjadi lebih baik
-            dari hari sebelumnya.
-        </p>
-
-        <div class="divider">♡ ───────── ♡</div>
-
-        <h2>UNTUK HARI KETIKA MAS LELAH ♡</h2>
-
-        <p>
-            Mas,
-        </p>
-
-        <p>
-            Kalau suatu hari Mas merasa lelah,
-            tolong jangan merasa harus selalu terlihat kuat.
-        </p>
-
-        <p>
-            Tidak apa-apa kalau hari ini Mas
-            tidak bisa melakukan semuanya.
-            Tidak apa-apa kalau langkah Mas sedikit lebih pelan.
-            Tidak apa-apa kalau Mas hanya ingin berhenti sebentar
-            dan mengambil napas.
-        </p>
-
-        <p>
-            Mas sudah berjalan sejauh ini.
-        </p>
-
-        <p>
-            Jangan lupakan itu.
-        </p>
-
-        <p>
-            Ada begitu banyak hal yang sudah Mas lewati,
-            begitu banyak usaha yang mungkin tidak semua orang lihat,
-            dan begitu banyak perjuangan yang hanya Mas sendiri
-            yang tahu.
-        </p>
-
-        <p>
-            Jadi, kalau hari ini terasa berat,
-            istirahatlah sebentar.
-        </p>
-
-        <p>
-            Bukan berarti Mas menyerah.
-            Mas hanya sedang memberi kesempatan kepada diri sendiri
-            untuk kembali kuat.
-        </p>
-
-        <p>
-            Dan kalau nanti Mas sudah siap untuk melangkah lagi,
-            mulailah dari satu langkah kecil.
-        </p>
-
-        <p>
-            Tidak harus langsung jauh.
-            Tidak harus langsung sempurna.
-        </p>
-
-        <p>
-            Yang penting, Mas tetap percaya pada mimpi
-            yang sedang Mas perjuangkan.
-        </p>
-
-        <p>
-            Adek mungkin tidak selalu tahu bagaimana perjalanan
-            Mas setiap hari, tetapi Adek berharap Mas selalu
-            menemukan alasan untuk tersenyum,
-            menemukan alasan untuk percaya,
-            dan menemukan keberanian untuk mencoba lagi.
-        </p>
-
-        <p>
-            Karena ada mimpi-mimpi yang masih menunggu
-            untuk diwujudkan.
-        </p>
-
-        <p>
-            Ada masa depan yang masih ingin Mas temui.
-        </p>
-
-        <p>
-            Dan ada versi diri Mas di masa depan
-            yang mungkin suatu hari akan berterima kasih
-            karena hari ini Mas memilih untuk terus melangkah.
-        </p>
-
-        <h3>
-            Mas boleh beristirahat.<br>
-            Mas boleh berjalan perlahan.<br>
-            Tapi jangan berhenti percaya pada diri sendiri. ♡
-        </h3>
-
-        <div class="divider">♡ ───────── ♡</div>
-
-        <h2>SEBUAH PUISI KECIL ♡</h2>
-
-        <div class="poem">
-
-            <p>
-                Jika nanti jalan terasa panjang,<br>
-                jangan takut pada langkah yang perlahan.
-            </p>
-
-            <p>
-                Sebab bunga pun tidak mekar<br>
-                dalam satu malam,<br>
-                dan pagi tidak datang<br>
-                hanya karena kita memintanya.
-            </p>
-
-            <p>
-                Ada waktu untuk berjuang,<br>
-                ada waktu untuk beristirahat,<br>
-                ada waktu untuk menangis,<br>
-                dan ada waktu untuk kembali tersenyum.
-            </p>
-
-            <p>
-                Jadi, berjalanlah pelan-pelan, Mas.
-            </p>
-
-            <p>
-                Bawa semua mimpi yang masih ingin dicapai,<br>
-                bawa semua harapan yang belum selesai,<br>
-                dan bawa keyakinan<br>
-                bahwa setiap usaha memiliki cerita.
-            </p>
-
-            <p>
-                Jika suatu hari langit terasa mendung,<br>
-                semoga Mas tetap ingat—
-            </p>
-
-            <p>
-                setelah malam,<br>
-                selalu ada pagi yang menunggu.
-            </p>
-
-            <p>
-                Dan di antara begitu banyak<br>
-                jalan yang harus ditempuh,<br>
-                semoga Mas menemukan<br>
-                alasan untuk terus melangkah. ♡
-            </p>
-
-        </div>
-
-        <div class="divider">♡ ───────── ♡</div>
-
-        <h2>SAMPAI NANTI, DI UJUNG MIMPI ♡</h2>
-
-        <p>
-            Jika suatu hari nanti kita membaca kembali tulisan ini,
-            mungkin kita akan tersenyum mengingat betapa panjangnya
-            perjalanan yang pernah kita lewati.
-        </p>
-
-        <p>
-            Ada hari-hari yang mudah,
-            ada pula hari yang membuat kita ingin menyerah.
-        </p>
-
-        <p>
-            Namun semoga kita selalu ingat,
-            bahwa setiap langkah kecil pernah membawa kita
-            lebih dekat kepada mimpi yang kita perjuangkan.
-        </p>
-
-        <p>
-            Jika langkah Mas terasa jauh,
-            berjalanlah perlahan.
-        </p>
-
-        <p>
-            Jika langkah Adek terasa berat,
-            Adek juga akan belajar untuk tetap melangkah.
-        </p>
-
-        <p>
-            Karena mimpi tidak selalu harus dikejar
-            dengan langkah yang besar.
-        </p>
-
-        <p>
-            Kadang, cukup dengan satu langkah hari ini,
-            kemudian satu langkah lagi esok hari.
-        </p>
-
-        <h2>
-            Mas mengejar impian Mas.<br>
-            Adek mengejar impian Adek.
-        </h2>
-
-        <p>
-            Sampai suatu hari nanti,
-            ketika semua yang kita perjuangkan
-            perlahan menemukan jalannya,
-            semoga kita bisa menoleh ke belakang
-            dan tersenyum pada diri kita yang dulu.
-        </p>
-
-        <p>
-            Pada diri yang pernah lelah,
-            pernah takut,
-            pernah ragu,
-            tetapi memilih untuk tetap mencoba.
-        </p>
-
-        <p>
-            Dan jika ada satu hal yang ingin Adek tinggalkan
-            di halaman terakhir ini,
-            bukan janji,
-            bukan kata-kata yang terlalu besar,
-            hanya sebuah doa kecil:
-        </p>
-
-        <h3>
-            Semoga langkah Mas selalu menemukan jalan.<br>
-            Semoga langkah Adek juga menemukan jalannya.<br>
-            Dan semoga semua mimpi yang kita simpan
-            perlahan menemukan waktunya untuk menjadi nyata. ♡
-        </h3>
-
-        <p>
-            Karena beberapa cerita tidak perlu selesai hari ini.
-        </p>
-
-        <p>
-            Ada yang cukup kita jalani,
-            kita perjuangkan,
-            dan kita biarkan waktu
-            menuliskan halaman berikutnya.
-        </p>
-
-        <div class="closing">
-
-            <h2>
-                TERUSLAH BERJALAN.<br>
-                TERUSLAH BERMIMPI. ♡
-            </h2>
-
-            <p>
-                Dan ketika suatu hari nanti
-                Mas berhasil sampai di tempat yang Mas impikan,
-                ingatlah...
-            </p>
-
-            <p>
-                pernah ada satu halaman kecil
-                yang ditulis seseorang
-                dengan harapan sederhana:
-            </p>
-
-            <h2>
-                “Semoga Mas berhasil.” ♡
-            </h2>
-
-            <p>
-                — Adek —
-            </p>
-
-        </div>
 
     </div>
 
 </div>
 
 
+<!-- HALAMAN 6 -->
+
+<div class="page">
+
+    <h2>UNTUK PERJALANAN MAS ♡</h2>
+
+    <div class="poem">
+
+        <p>
+            Jadi, berjalanlah pelan-pelan, Mas.
+        </p>
+
+        <p>
+            Bawa semua mimpi yang masih ingin dicapai,<br>
+            bawa semua harapan yang belum selesai,<br>
+            dan bawa keyakinan<br>
+            bahwa setiap usaha memiliki cerita.
+        </p>
+
+        <p>
+            Jika suatu hari langit terasa mendung,<br>
+            semoga Mas tetap ingat—
+        </p>
+
+        <p>
+            setelah malam,<br>
+            selalu ada pagi yang menunggu.
+        </p>
+
+        <p>
+            Dan di antara begitu banyak<br>
+            jalan yang harus ditempuh,<br>
+            semoga Mas menemukan<br>
+            alasan untuk terus melangkah. ♡
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- HALAMAN 7 -->
+
+<div class="page">
+
+    <h2>SAMPAI NANTI, DI UJUNG MIMPI ♡</h2>
+
+    <p>
+        Jika suatu hari nanti kita membaca kembali tulisan ini,
+        mungkin kita akan tersenyum mengingat betapa panjangnya
+        perjalanan yang pernah kita lewati.
+    </p>
+
+    <p>
+        Ada hari-hari yang mudah,
+        ada pula hari yang membuat kita ingin menyerah.
+    </p>
+
+    <p>
+        Namun semoga kita selalu ingat,
+        bahwa setiap langkah kecil pernah membawa kita
+        lebih dekat kepada mimpi yang kita perjuangkan.
+    </p>
+
+    <p>
+        Jika langkah Mas terasa jauh,
+        berjalanlah perlahan.
+    </p>
+
+    <p>
+        Jika langkah Adek terasa berat,
+        Adek juga akan belajar untuk tetap melangkah.
+    </p>
+
+</div>
+
+
+<!-- HALAMAN 8 -->
+
+<div class="page">
+
+    <h2>SELANGKAH DEMI SELANGKAH ♡</h2>
+
+    <p>
+        Karena mimpi tidak selalu harus dikejar
+        dengan langkah yang besar.
+    </p>
+
+    <p>
+        Kadang, cukup dengan satu langkah hari ini,
+        kemudian satu langkah lagi esok hari.
+    </p>
+
+    <h3>
+        Mas mengejar impian Mas.<br>
+        Adek mengejar impian Adek.
+    </h3>
+
+    <p>
+        Sampai suatu hari nanti,
+        ketika semua yang kita perjuangkan
+        perlahan menemukan jalannya,
+        semoga kita bisa menoleh ke belakang
+        dan tersenyum pada diri kita yang dulu.
+    </p>
+
+    <p>
+        Pada diri yang pernah lelah,
+        pernah takut,
+        pernah ragu,
+        tetapi memilih untuk tetap mencoba.
+    </p>
+
+</div>
+
+
+<!-- HALAMAN 9 -->
+
+<div class="page">
+
+    <h2>SEBUAH DOA KECIL ♡</h2>
+
+    <p>
+        Dan jika ada satu hal yang ingin Adek tinggalkan
+        di halaman terakhir ini,
+        bukan janji,
+        bukan kata-kata yang terlalu besar,
+        hanya sebuah doa kecil:
+    </p>
+
+    <h3>
+        Semoga langkah Mas selalu menemukan jalan.<br><br>
+        Semoga langkah Adek juga menemukan jalannya.<br><br>
+        Dan semoga semua mimpi yang kita simpan
+        perlahan menemukan waktunya untuk menjadi nyata. ♡
+    </h3>
+
+</div>
+
+
+<!-- HALAMAN 10 -->
+
+<div class="page">
+
+    <h2>HALAMAN TERAKHIR ♡</h2>
+
+    <p>
+        Karena beberapa cerita tidak perlu selesai hari ini.
+    </p>
+
+    <p>
+        Ada yang cukup kita jalani,
+        kita perjuangkan,
+        dan kita biarkan waktu
+        menuliskan halaman berikutnya.
+    </p>
+
+    <div class="divider">
+        ♡ ───────── ♡
+    </div>
+
+    <h2>
+        TERUSLAH BERJALAN.<br>
+        TERUSLAH BERMIMPI. ♡
+    </h2>
+
+    <p>
+        Dan ketika suatu hari nanti
+        Mas berhasil sampai di tempat yang Mas impikan,
+        ingatlah...
+    </p>
+
+    <p>
+        pernah ada satu halaman kecil
+        yang ditulis seseorang
+        dengan harapan sederhana:
+    </p>
+
+    <h3>
+        “Semoga Mas berhasil.” ♡
+    </h3>
+
+    <div class="signature">
+        — Adek —
+    </div>
+
+</div>
+
+
+<!-- NAVIGASI -->
+
+<div class="navigation">
+
+    <button onclick="prevPage()">
+        ← BACK
+    </button>
+
+    <button onclick="nextPage()">
+        NEXT →
+    </button>
+
+    <div class="page-number" id="pageNumber">
+        1 / 10
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+
 <script>
+
+let currentPage = 0;
+
+const pages = document.querySelectorAll(".page");
+
+function showPage(number) {
+
+    pages.forEach(function(page) {
+        page.classList.remove("active");
+    });
+
+    pages[number].classList.add("active");
+
+    document.getElementById("pageNumber").textContent =
+        (number + 1) + " / " + pages.length;
+
+}
+
+function nextPage() {
+
+    if (currentPage < pages.length - 1) {
+        currentPage++;
+        showPage(currentPage);
+    }
+
+}
+
+function prevPage() {
+
+    if (currentPage > 0) {
+        currentPage--;
+        showPage(currentPage);
+    }
+
+}
 
 function bukaSurat() {
 
@@ -504,6 +692,8 @@ function bukaSurat() {
         document.getElementById("kunci").style.display = "none";
 
         document.getElementById("pesan").style.display = "block";
+
+        showPage(0);
 
     } else {
 
