@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>For You, Mas ♡</title>
+    <title>Private Letter ♡</title>
 
     <style>
         body {
@@ -13,7 +13,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-
             background: #243B53;
             font-family: Georgia, serif;
             color: #243B53;
@@ -21,64 +20,151 @@
 
         .paper {
             width: 80%;
-            max-width: 650px;
-            padding: 50px 35px;
+            max-width: 600px;
+            padding: 45px 30px;
             text-align: center;
-
             background: #F5F0E6;
-            border: 2px solid #E7DED0;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
         h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
+            font-size: 38px;
         }
 
         p {
-            font-size: 18px;
-            line-height: 1.8;
+            line-height: 1.7;
+            font-size: 17px;
         }
 
-        .button {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 13px 25px;
+        input {
+            width: 80%;
+            padding: 13px;
+            margin-top: 15px;
+            border: 1px solid #587A9E;
+            background: #ffffff;
+            text-align: center;
+            font-size: 16px;
+        }
 
+        button {
+            margin-top: 18px;
+            padding: 13px 28px;
+            border: none;
             background: #587A9E;
             color: white;
-
-            text-decoration: none;
-            border-radius: 4px;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            cursor: pointer;
         }
 
-        .small {
-            margin-top: 30px;
-            font-size: 14px;
-            opacity: 0.7;
+        #pesan {
+            display: none;
+        }
+
+        .error {
+            color: #8B3A3A;
+            margin-top: 15px;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="paper">
+<div class="paper">
+
+    <div id="kunci">
+
+        <h1>PRIVATE LETTER ♡</h1>
+
+        <p>
+            Ada pesan kecil yang hanya ingin Adek sampaikan.
+        </p>
+
+        <p>
+            Masukkan kode untuk membukanya.
+        </p>
+
+        <input
+            type="password"
+            id="kode"
+            placeholder="Masukkan kode..."
+        >
+
+        <br>
+
+        <button onclick="bukaSurat()">
+            OPEN MY LETTER ♡
+        </button>
+
+        <div id="error" class="error"></div>
+
+    </div>
+
+    <div id="pesan">
 
         <h1>FOR YOU, MAS ♡</h1>
 
         <p>
-            Ada sedikit pesan yang ingin Adek sampaikan...
+            Mas, Adek mau Mas terus berjuang
+            untuk meraih impian Mas.
         </p>
 
-        <a href="#pesan" class="button">
-            OPEN MY LETTER ♡
-        </a>
+        <p>
+            Jangan menyerah dengan prosesnya.
+            Pelan-pelan saja, satu langkah demi satu langkah.
+        </p>
 
-        <p class="small">
-            — from Adek —
+        <p>
+            Adek juga akan terus berusaha
+            mengejar impian Adek.
+        </p>
+
+        <h2>
+            Mas kejar impian Mas.<br>
+            Adek kejar impian Adek.
+        </h2>
+
+        <p>
+            Dan kita sama-sama menggapai impian kita. ♡
+        </p>
+
+        <p>
+            Semangat terus, Mas.
+        </p>
+
+        <p>
+            — Adek —
         </p>
 
     </div>
+
+</div>
+
+<script>
+
+function bukaSurat() {
+
+    const kode =
+        document.getElementById("kode").value;
+
+    const kodeBenar = "MASADEK2026";
+
+    if (kode === kodeBenar) {
+
+        document.getElementById("kunci").style.display = "none";
+
+        document.getElementById("pesan").style.display = "block";
+
+    } else {
+
+        document.getElementById("error").textContent =
+            "Kode belum benar. Coba lagi ♡";
+
+    }
+
+}
+
+</script>
 
 </body>
 </html>
